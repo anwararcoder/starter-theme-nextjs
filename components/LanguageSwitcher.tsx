@@ -1,18 +1,19 @@
 "use client";
 
 import { AxiosAPI } from "@/axios/axiosInstance";
+import { setLanguage } from "@/utils/cookiesFunctions";
 import { useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import { useTransition } from "react";
 
-export default function LanguageSwitcher() {
+export function LanguageSwitcher() {
   const router = useRouter();
   const queryClient = useQueryClient();
   const [, startTransition] = useTransition();
 
   function switchTo(locale: string) {
-    startTransition(() => {
-      document.cookie = `LANG=${locale}; path=/; max-age=31536000; SameSite=Lax`;
+    startTransition(async () => {
+      await setLanguage(locale);
       router.refresh();
     });
     AxiosAPI.defaults.headers["Accept-Language"] = locale;

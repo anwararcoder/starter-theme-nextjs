@@ -1,7 +1,3 @@
-import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query'
-import SectionsList from '@/components/SectionsList'
-import { getSections } from "@/apis/api";
-
 export default async function UsersPage() {
   // const queryClient = new QueryClient();
 
@@ -12,10 +8,8 @@ export default async function UsersPage() {
 
   return (
     // <HydrationBoundary state={dehydrate(queryClient)}>
-      // <SectionsList />
+    // <SectionsList />
     // </HydrationBoundary>
-    <>
-    <SectionsList />
-    sefse</>
+    <>sefse</>
   );
 }

@@ -2,7 +2,6 @@
 
 import { NextIntlClientProvider } from "next-intl";
 import ReactQueryProvider from "./ReactQueryProvider";
-import { ErrorMessageProvider } from "@/hooks/useErrorMessage";
 
 export function Providers({
   children,
@@ -15,9 +14,7 @@ export function Providers({
 }) {
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>
-      <ReactQueryProvider>
-        <ErrorMessageProvider>{children}</ErrorMessageProvider>
-      </ReactQueryProvider>
+      <ReactQueryProvider>{children}</ReactQueryProvider>
     </NextIntlClientProvider>
   );
 }

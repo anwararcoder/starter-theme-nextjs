@@ -1,57 +1,44 @@
-import { generateUUID } from "@/utils/generateUUID";
-import { getFromCookies } from "@/utils/getFromCookies";
-import { showErrors } from "@/utils/showErrors";
+import { getLanguage, getToken } from "@/utils/cookiesFunctions";
 import axios from "axios";
 
+// Create a clean instance
 export const AxiosAPI = axios.create({
   baseURL: process.env.BASE_URL,
   headers: {
-    "Cache-Control": "no-cache, no-store, must-revalidate",
-    Pragma: "no-cache",
-    Expires: "0",
+    "Content-Type": "application/json",
     Accept: "application/json",
   },
+  timeout: 10000,
 });
 
+// Request Interceptor
 AxiosAPI.interceptors.request.use(
-  (config) => {
-    let lang = getFromCookies("LANG");
-    config.headers["Accept-Language"] = lang || 'en';
+  async (config) => {
+    // Handle Language
+    const langCookie = await getLanguage();
+    const lang = langCookie?.value || "en";
+    config.headers["Accept-Language"] = lang;
 
-    // ------------------------------------------------------------------------------------------
-    let branchId = getFromCookies("branch-id");
-    config.headers["branch-id"] = branchId || '0';
-
-    // ------------------------------------------------------------------------------------------
-    let serviceId = getFromCookies("service-id");
-    config.headers["service-id"] = serviceId || '';
-
-    // ------------------------------------------------------------------------------------------
-    config.headers["device-type"] = 4;
-
-    // ------------------------------------------------------------------------------------------
-    let token = getFromCookies("token");
-    config.headers["Authorization"] = token ? `Bearer ${token}` : undefined
-
-    // ------------------------------------------------------------------------------------------
-    let deviceToken = getFromCookies("deviceToken");
-    if (!deviceToken) {
-      deviceToken = generateUUID();
-      document.cookie = `deviceToken=${deviceToken}; path=/; max-age=31536000; SameSite=Lax`;
+    // Handle Authorization
+    const tokenCookie = await getToken();
+    const token = tokenCookie?.value;
+    if (token) {
+      config.headers["Authorization"] = `Bearer ${token}`;
     }
-    config.headers["device-token"] = deviceToken;
 
-    // ------------------------------------------------------------------------------------------
     return config;
   },
-  (error) => Promise.reject(error)
+  (error) => {
+    return Promise.reject(error);
+  },
 );
 
 // Response Interceptor
 AxiosAPI.interceptors.response.use(
-  (response) => response,
-  (error) => {
-    showErrors(error?.response?.data);
+  (response) => {
+    return response;
+  },
+  async (error) => {
     return Promise.reject(error);
-  }
+  },
 );

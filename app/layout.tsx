@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { getMessages, getLocale } from "next-intl/server";
 import { Providers } from "@/providers/Providers";
 import "@/styles/globals.css";
-import LanguageSwitcher from "@/components/LanguageSwitcher";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 
 export const metadata: Metadata = {
   title: "starter-theme-nextjs",
@@ -19,7 +19,7 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"}>
-      <body suppressHydrationWarning>
+      <body>
         <Providers locale={locale} messages={messages}>
           {children}
           <LanguageSwitcher />
