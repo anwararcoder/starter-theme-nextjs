@@ -22,7 +22,7 @@ export default async function RootLayout({
       <body>
         <Providers locale={locale} messages={messages}>
           {children}
-          <LanguageSwitcher />
+          {/* <LanguageSwitcher /> */}
         </Providers>
       </body>
     </html>

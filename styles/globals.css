@@ -1,1 +1,229 @@
+/*
+::
+:: Theme Name: NestEstate - Property Listing & Real Estate TailwindCss Template
+:: Email: arcoder14@gmail.com
+:: Author URI: https://themeforest.net/user/ar-coder
+:: Author: ar-coder
+:: Version: 1.0
+::
+*/
+
+/* :: Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Unbounded:wght@200..900&display=swap');
+
+/* :: TailwindCss */
 @import "tailwindcss";
+
+/* :: TailwindCss Theme Vars */
+@theme {
+    /* :: Breakpoints */
+    --breakpoint-xs: 576px;
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 992px;
+    --breakpoint-xl: 1200px;
+    --breakpoint-2xl: 1400px;
+
+    /* :: Max Width */
+    --max-width-xs: 100%;
+    --max-width-sm: 576px;
+    --max-width-md: 768px;
+    --max-width-lg: 992px;
+    --max-width-xl: 1200px;
+    --max-width-2xl: 1400px;
+
+    /* :: Font Families */
+    --font-family-unbounded: "Unbounded", serif;
+    --font-family-poppins: "Poppins", sans-serif;
+
+    /* :: Box Shadows */
+    --shadow-nav: 0 5px 40px rgb(28 26 48 / 10%);
+    --shadow-nav-res: 0px 3px 7px 0px rgb(28 26 48 / 10%);
+    --shadow-level2Menu: 0 22px 50px rgb(28 26 48 / 15%);
+}
+
+/* :: TailwindCss Base */
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+
+    * {
+        -webkit-transition: all 0.2s ease-in-out;
+        -o-transition: all 0.2s ease-in-out;
+        transition: all 0.2s ease-in-out;
+        outline: none;
+    }
+
+    /* :: Scrollbar Width */
+    ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+    }
+
+    /* :: Scrollbar Track */
+    ::-webkit-scrollbar-track {
+        /* background: red; */
+        background: rgb(249 249 249 / 50%);
+    }
+
+    /* :: Scrollbar Handle */
+    ::-webkit-scrollbar-thumb {
+        background: #086fc5;
+        border-radius: 10px;
+    }
+
+    /* :: Scrollbar Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #F57009;
+    }
+
+    ::selection {
+        background-color: #F57009;
+        color: #fff;
+        text-shadow: none;
+    }
+
+    /* :: Body */
+    body {
+        font-family: "Poppins", sans-serif;
+        font-size: 14px;
+        line-height: 25px;
+        color: #1C1A30;
+    }
+
+    p {
+        color: #ddd;
+        font-size: 14px;
+        font-weight: 400;
+        font-family: "Poppins", sans-serif;
+        line-height: 25px;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: "Unbounded", serif;
+    }
+
+    .btn-1 {
+        text-transform: capitalize;
+        position: relative;
+        text-align: center;
+        z-index: 1;
+        font-size: 14px;
+        font-weight: 600;
+        min-width: 180px;
+        height: 60px;
+        padding: 0 15px;
+        letter-spacing: 1px;
+        border-radius: 3px;
+        overflow: hidden;
+        -webkit-transition: all 0.4s ease-in-out;
+        -o-transition: all 0.4s ease-in-out;
+        transition: all 0.4s ease-in-out;
+        background-color: #F57009;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        color: white;
+    }
+
+    .btn-1:hover {
+        color: #F57009;
+    }
+
+    .btn-1:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background-color: white;
+        -webkit-transform: scaleY(0);
+        -ms-transform: scaleY(0);
+        transform: scaleY(0);
+        -webkit-transform-origin: bottom center;
+        -ms-transform-origin: bottom center;
+        transform-origin: bottom center;
+        -webkit-transition: -webkit-transform 0.4s ease-in-out;
+        transition: -webkit-transform 0.4s ease-in-out;
+        -o-transition: transform 0.4s ease-in-out;
+        transition: transform 0.4s ease-in-out;
+        transition: transform 0.4s ease-in-out, -webkit-transform 0.4s ease-in-out;
+    }
+
+    .btn-1:hover:after {
+        -webkit-transform: scaleY(1);
+        -ms-transform: scaleY(1);
+        transform: scaleY(1);
+        -webkit-transform-origin: top center;
+        -ms-transform-origin: top center;
+        transform-origin: top center;
+    }
+
+    .btn-2 {
+        background-color: white;
+        color: #F57009;
+    }
+
+    .btn-2:hover {
+        color: white;
+    }
+
+    .btn-2:after {
+        background-color: #F57009;
+    }
+
+    .btn-3:hover {
+        color: white;
+    }
+
+    .btn-3:after {
+        background-color: #1C1A30;
+    }
+
+    .btn-4 {
+        background-color: #1C1A30;
+        color: white;
+    }
+
+    .btn-4:hover {
+        color: white;
+    }
+
+    .btn-4:after {
+        background-color: #F57009;
+    }
+
+    .btn-5 {
+        background-color: #1C1A30;
+        color: white;
+    }
+
+    .btn-5:hover {
+        color: #F57009;
+    }
+
+    .btn-5:after {
+        background-color: white;
+    }
+
+    .hide-box {
+        -webkit-transform: translateY(-110%);
+        -ms-transform: translateY(-110%);
+        transform: translateY(-110%);
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+}
+
+.active-link, .active-sub-link {
+  color: #F57009;
+}

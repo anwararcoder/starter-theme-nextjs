@@ -2,6 +2,7 @@
 
 import { NextIntlClientProvider } from "next-intl";
 import ReactQueryProvider from "./ReactQueryProvider";
+import { ShareDataProvider } from "./ShareData";
 
 export function Providers({
   children,
@@ -14,7 +15,9 @@ export function Providers({
 }) {
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>
-      <ReactQueryProvider>{children}</ReactQueryProvider>
+      <ReactQueryProvider>
+        <ShareDataProvider>{children}</ShareDataProvider>
+      </ReactQueryProvider>
     </NextIntlClientProvider>
   );
 }
