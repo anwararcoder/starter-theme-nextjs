@@ -2,6 +2,10 @@ import { navbarData } from "@/data/navbarData";
 import { useShareData } from "@/providers/ShareData";
 import { NavbarLinksItemType } from "@/types/navbarTypes";
 import NavbarLinksItem from "./NavbarLinksItem";
+import Link from "next/link";
+import logoImage from "@/public/image/logo/01_logo.png";
+import Image from "next/image";
+
 
 const NavbarLinks = () => {
   const { openNavbarLinks, toggleNavbarLinks } = useShareData();
@@ -12,11 +16,11 @@ const NavbarLinks = () => {
     >
       <div className="h-full lg:h-auto bg-white lg:bg-transparent px-[40px] lg:px-0 py-[50px] lg:py-0 overflow-y-auto lg:overflow-y-visible [.activeNavbarMenu_&]:shadow-nav-res lg:[.activeNavbarMenu_&]:shadow-none">
         <div className="flex items-center justify-between mb-[40px] lg:hidden">
-          <a href="index.html" className="block">
-            Micro
-          </a>
+          <Link href="/" className="block">
+            <Image src={logoImage} alt="Logo" width={125} height={40} />
+          </Link>
           <button
-            className={`cursor-pointer text-[#1C1A30] hover:text-[#F57009] hover:rotate-180 ${
+            className={`cursor-pointer text-[#091D3E] hover:text-[#0092FF] hover:rotate-180 ${
               openNavbarLinks ? "openNavbarMenu" : ""
             }`}
             onClick={toggleNavbarLinks}
@@ -43,7 +47,7 @@ const NavbarLinks = () => {
               <a
                 href="#"
                 aria-label="facebook"
-                className="w-[40px] h-[40px] flex items-center justify-center border-[1px] border-[#DDD] hover:border-[#F57009] bg-[#f9f9f9] hover:bg-[#F57009] text-[#F57009] hover:text-white rounded-[3px]"
+                className="w-[40px] h-[40px] flex items-center justify-center border-[1px] border-[#DDD] hover:border-[#0092FF] bg-[#f9f9f9] hover:bg-[#0092FF] text-[#0092FF] hover:text-white rounded-[3px]"
               >
                 <svg
                   className="fill-current w-[15px] h-[15px]"
@@ -57,7 +61,7 @@ const NavbarLinks = () => {
               <a
                 href="#"
                 aria-label="X.com"
-                className="w-[40px] h-[40px] flex items-center justify-center border-[1px] border-[#DDD] hover:border-[#F57009] bg-[#f9f9f9] hover:bg-[#F57009] text-[#F57009] hover:text-white rounded-[3px]"
+                className="w-[40px] h-[40px] flex items-center justify-center border-[1px] border-[#DDD] hover:border-[#0092FF] bg-[#f9f9f9] hover:bg-[#0092FF] text-[#0092FF] hover:text-white rounded-[3px]"
               >
                 <svg
                   className="fill-current w-[15px] h-[15px]"
@@ -71,7 +75,7 @@ const NavbarLinks = () => {
               <a
                 href="#"
                 aria-label="linkedin"
-                className="w-[40px] h-[40px] flex items-center justify-center border-[1px] border-[#DDD] hover:border-[#F57009] bg-[#f9f9f9] hover:bg-[#F57009] text-[#F57009] hover:text-white rounded-[3px]"
+                className="w-[40px] h-[40px] flex items-center justify-center border-[1px] border-[#DDD] hover:border-[#0092FF] bg-[#f9f9f9] hover:bg-[#0092FF] text-[#0092FF] hover:text-white rounded-[3px]"
               >
                 <svg
                   className="fill-current w-[15px] h-[15px]"
@@ -85,7 +89,7 @@ const NavbarLinks = () => {
               <a
                 href="#"
                 aria-label="vimeo"
-                className="w-[40px] h-[40px] flex items-center justify-center border-[1px] border-[#DDD] hover:border-[#F57009] bg-[#f9f9f9] hover:bg-[#F57009] text-[#F57009] hover:text-white rounded-[3px]"
+                className="w-[40px] h-[40px] flex items-center justify-center border-[1px] border-[#DDD] hover:border-[#0092FF] bg-[#f9f9f9] hover:bg-[#0092FF] text-[#0092FF] hover:text-white rounded-[3px]"
               >
                 <svg
                   className="fill-current w-[15px] h-[15px]"
@@ -99,7 +103,7 @@ const NavbarLinks = () => {
               <a
                 href="#"
                 aria-label="youtube"
-                className="w-[40px] h-[40px] flex items-center justify-center border-[1px] border-[#DDD] hover:border-[#F57009] bg-[#f9f9f9] hover:bg-[#F57009] text-[#F57009] hover:text-white rounded-[3px]"
+                className="w-[40px] h-[40px] flex items-center justify-center border-[1px] border-[#DDD] hover:border-[#0092FF] bg-[#f9f9f9] hover:bg-[#0092FF] text-[#0092FF] hover:text-white rounded-[3px]"
               >
                 <svg
                   className="fill-current w-[15px] h-[15px]"
@@ -110,13 +114,13 @@ const NavbarLinks = () => {
               </a>
             </li>
           </ul>
-          <div className="text-[13px] capitalize leading-[1.6] font-[600] mt-[25px]">
+          <div className="text-[13px] capitalize leading-[1.6] font-[700] mt-[25px]">
             @ NestEstate 2026. All Rights Reserved.
           </div>
         </div>
       </div>
       <div
-        className={`fixed inset-0 opacity-0 [.activeNavbarMenu_&]:opacity-100 invisible [.activeNavbarMenu_&]:visible lg:[.activeNavbarMenu_&]:invisible lg:[.activeNavbarMenu_&]:opacity-0 bg-[#1C1A30]/20 z-[-1] cursor-pointer ${openNavbarLinks ? "activeNavbarMenu" : ""}`}
+        className={`fixed inset-0 opacity-0 [.activeNavbarMenu_&]:opacity-100 invisible [.activeNavbarMenu_&]:visible lg:[.activeNavbarMenu_&]:invisible lg:[.activeNavbarMenu_&]:opacity-0 bg-[#091D3E]/20 z-[-1] cursor-pointer ${openNavbarLinks ? "activeNavbarMenu" : ""}`}
         onClick={toggleNavbarLinks}/>
     </div>
   );

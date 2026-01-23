@@ -66,7 +66,7 @@ const NavbarLinksItemChildren = ({
     >
       <Link
         href={data.url}
-        className={`link-level-2 text-bodyColor hover:text-[#F57009] text-[14px] hover:bg-[#f9f9f9] border-[#DDD] font-[500] leading-[1.25] relative flex items-center justify-between py-[12px] px-[25px] ${isActive ? "active-sub-link" : ""} ${isLastItem ? "last:border-b-0" : "border-b-[1px]"} ${openLinkItem ? "active" : ""}`}
+        className={`link-level-2 text-bodyColor hover:text-[#0092FF] text-[14px] hover:bg-[#f9f9f9] border-[#DDD] font-[700] leading-[1.25] relative flex items-center justify-between py-[12px] px-[25px] ${isActive ? "active-sub-link" : ""} ${isLastItem ? "last:border-b-0" : "border-b-[1px]"} ${openLinkItem ? "active" : ""}`}
       >
         <span className="inline-flex items-center">
           <svg
@@ -78,7 +78,7 @@ const NavbarLinksItemChildren = ({
           {data.title}
         </span>
         {data.children && (
-          <i className="inline-flex items-center justify-center w-[25px] h-[25px] bg-[#F57009] rounded-[3px] rotate-[270deg] text-white [.link-level-2.active_&]:rotate-180 lg:w-auto lg:h-auto lg:bg-transparent lg:text-[#1C1A30] lg:group-hover/itemLevel2:text-[#F57009] lg:[.active-link_&]:text-[#F57009]">
+          <i className="inline-flex items-center justify-center w-[25px] h-[25px] bg-[#0092FF] rounded-[3px] rotate-[270deg] text-white [.link-level-2.active_&]:rotate-180 lg:w-auto lg:h-auto lg:bg-transparent lg:text-[#091D3E] lg:group-hover/itemLevel2:text-[#0092FF] lg:[.active-link_&]:text-[#0092FF]">
             <svg
               className="w-[10px] h-[10px] fill-current"
               viewBox="0 0 451.847 451.847"
@@ -99,7 +99,7 @@ const NavbarLinksItemChildren = ({
               onClick={handleChildItemClick}
             >
               <Link
-                className="link-level-3 text-bodyColor hover:text-[#F57009] text-[14px] hover:bg-[#f9f9f9] border-[#DDD] font-[500] leading-[1.25] relative flex items-center justify-between py-[12px] px-[25px]  border-b-[1px]"
+                className={`link-level-3 text-bodyColor hover:text-[#0092FF] text-[14px] hover:bg-[#f9f9f9] border-[#DDD] font-[700] leading-[1.25] relative flex items-center justify-between py-[12px] px-[25px] ${subIndex + 1 === data.children!.length ? "last:border-b-0" : "border-b-[1px]"}`}
                 href={subItem.url}
               >
                 <span className="inline-flex items-center">

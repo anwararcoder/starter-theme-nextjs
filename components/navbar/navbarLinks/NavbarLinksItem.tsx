@@ -3,8 +3,10 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 import NavbarLinksItemChildren from "./NavbarLinksItemChildren";
+import { useShareData } from "@/providers/ShareData";
 
 const NavbarLinksItem = ({ item }: { item: NavbarLinksItemType }) => {
+  const { toggleNavbarLinks } = useShareData();
   const pathname = usePathname();
 
   const [openLinkItem, setOpenLinkItem] = useState(false);
@@ -13,7 +15,8 @@ const NavbarLinksItem = ({ item }: { item: NavbarLinksItemType }) => {
   const hasChildren = !!item.children;
   const isActive =
     pathname === item.url ||
-    (hasChildren && item?.children?.some((subItem) => pathname === subItem.url));
+    (hasChildren &&
+      item?.children?.some((subItem) => pathname === subItem.url));
 
   useEffect(() => {
     const checkScreenSize = () => {
@@ -33,15 +36,18 @@ const NavbarLinksItem = ({ item }: { item: NavbarLinksItemType }) => {
   return (
     <li
       className={`group item-level-1 ${hasChildren ? "has-menu" : ""}`}
-      onClick={handleOpenLinkItem}
+      onClick={() => {
+        handleOpenLinkItem();
+        toggleNavbarLinks();
+      }}
     >
       <Link
         href={item.url}
-        className={`link-level-1 flex items-center justify-between lg:gap-[5px] lg:py-[30px] leading-[45px] lg:leading-[25px] cursor-pointer text-[14px] text-[#1C1A30] hover:text-[#F57009] capitalize font-[600] [&.active-link]:text-[#F57009] ${isActive ? "active-link" : ""} ${openLinkItem ? "active" : ""} `}
+        className={`link-level-1 flex items-center justify-between lg:gap-[5px] lg:py-[30px] leading-[45px] lg:leading-[25px] cursor-pointer text-[14px] text-[#091D3E] hover:text-[#0092FF] capitalize font-[700] [&.active-link]:text-[#0092FF] ${isActive ? "active-link" : ""} ${openLinkItem ? "active" : ""} `}
       >
         {item.title}
         {hasChildren && (
-          <i className="inline-flex items-center justify-center w-[25px] h-[25px] bg-[#F57009] rounded-[3px] text-white [.link-level-1.active_&]:rotate-180 lg:w-auto lg:h-auto lg:bg-transparent lg:text-[#1C1A30] lg:group-hover:rotate-180 lg:group-hover:text-[#F57009] lg:[.active-link_&]:text-[#F57009]">
+          <i className="inline-flex items-center justify-center w-[25px] h-[25px] bg-[#0092FF] rounded-[3px] text-white [.link-level-1.active_&]:rotate-180 lg:w-auto lg:h-auto lg:bg-transparent lg:text-[#091D3E] lg:group-hover:rotate-180 lg:group-hover:text-[#0092FF] lg:[.active-link_&]:text-[#0092FF]">
             <svg
               className="w-[10px] h-[10px] fill-current"
               viewBox="0 0 451.847 451.847"
